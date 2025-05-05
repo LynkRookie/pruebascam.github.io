@@ -1,0 +1,207 @@
+/* Estilos para el reproductor de video avanzado */
+.advanced-player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.video-player-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.video-display {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.video-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mjpeg-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.jpg-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detection-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.detection-canvas.active {
+  opacity: 1;
+}
+
+.loading-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  z-index: 10;
+}
+
+.error-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  z-index: 9;
+}
+
+.player-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.video-player-container:hover .player-controls {
+  opacity: 1;
+}
+
+.control-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.control-btn.active {
+  background-color: var(--secondary-color);
+}
+
+.control-btn.hidden {
+  display: none;
+}
+
+.stream-stats {
+  display: flex;
+  gap: 10px;
+  color: white;
+  font-size: 12px;
+}
+
+.status-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 5;
+}
+
+.status-connected {
+  background-color: rgba(46, 204, 113, 0.7);
+  color: white;
+}
+
+.status-disconnected {
+  background-color: rgba(231, 76, 60, 0.7);
+  color: white;
+}
+
+.status-motion {
+  background-color: rgba(243, 156, 18, 0.7);
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Efecto visual para detección de movimiento */
+.motion-detected {
+  animation: motion-border 1s infinite;
+}
+
+@keyframes motion-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(243, 156, 18, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(243, 156, 18, 0);
+  }
+}

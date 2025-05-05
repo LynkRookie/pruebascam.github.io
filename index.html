@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Cámara de Seguridad</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Monitor de Cámara de Seguridad</h1>
+        </header>
+        
+        <main>
+            <section class="connection-panel">
+                <h2>Conectar a la Cámara</h2>
+                <form id="camera-form">
+                    <div class="form-group">
+                        <label for="camera-ip">Dirección IP:</label>
+                        <input type="text" id="camera-ip" placeholder="Ej: 192.168.1.100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="camera-port">Puerto:</label>
+                        <input type="number" id="camera-port" placeholder="Ej: 8080" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="camera-username">Usuario (opcional):</label>
+                        <input type="text" id="camera-username" placeholder="Usuario">
+                    </div>
+                    <div class="form-group">
+                        <label for="camera-password">Contraseña (opcional):</label>
+                        <input type="password" id="camera-password" placeholder="Contraseña">
+                    </div>
+                    <button type="submit" class="btn-connect">Conectar</button>
+                </form>
+                <div id="connection-status" class="status-disconnected">Desconectado</div>
+            </section>
+            
+            <section class="video-panel">
+                <div class="video-container">
+                    <div id="loading-indicator" class="hidden">
+                        <div class="spinner"></div>
+                        <p>Conectando...</p>
+                    </div>
+                    <div id="video-placeholder">
+                        <i class="fa-solid fa-video-slash"></i>
+                        <p>Sin conexión a la cámara</p>
+                    </div>
+                    <img id="video-stream" class="hidden" alt="Transmisión de video">
+                </div>
+                
+                <div class="controls-panel">
+                    <div class="camera-controls">
+                        <button id="btn-up" class="control-btn" disabled><i class="fa-solid fa-chevron-up"></i></button>
+                        <div class="horizontal-controls">
+                            <button id="btn-left" class="control-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                            <button id="btn-home" class="control-btn" disabled><i class="fa-solid fa-house"></i></button>
+                            <button id="btn-right" class="control-btn" disabled><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        <button id="btn-down" class="control-btn" disabled><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                    
+                    <div class="additional-controls">
+                        <button id="btn-snapshot" class="action-btn" disabled><i class="fa-solid fa-camera"></i> Capturar</button>
+                        <button id="btn-record" class="action-btn" disabled><i class="fa-solid fa-record-vinyl"></i> Grabar</button>
+                        <button id="btn-files" class="action-btn" disabled><i class="fa-solid fa-folder-open"></i> Archivos</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="files-panel" class="files-panel hidden">
+                <h2>Archivos Almacenados</h2>
+                <div class="files-toolbar">
+                    <button id="btn-refresh-files"><i class="fa-solid fa-sync"></i> Actualizar</button>
+                    <select id="file-filter">
+                        <option value="all">Todos los archivos</option>
+                        <option value="video">Videos</option>
+                        <option value="image">Imágenes</option>
+                    </select>
+                </div>
+                <div id="files-container" class="files-container">
+                    <p class="no-files">No hay archivos disponibles o no se ha conectado a la cámara.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Proyecto Personal de Monitoreo de Cámara de Seguridad</p>
+        </footer>
+    </div>
+    
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Título</h2>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
